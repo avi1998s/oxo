@@ -1,0 +1,158 @@
+.container.floyd{
+    width: 100%;
+}
+.container{
+    width: 900px;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+body{
+    margin: 0 auto;
+}
+.hed{
+    background-color: black;
+    color: azure;
+    gap: 16px;
+}
+
+.hed nav{
+    height: 80px;
+    gap: 8px;
+    width: fit-content;
+
+}
+nav button{
+    width: 100px;
+    height: 50px;
+    background-color: brown;
+    border: 2px white solid;
+    border-radius: 10%;
+    
+}
+#result{
+    flex-direction: column;
+    width: fit-content; 
+    height: 80px;
+   
+}
+.timer{
+    max-width: fit-content;
+}
+main{
+    background-color: rgba(0, 0, 0, 0.611);
+}
+main .container{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5%;
+    border: 25px rgb(255, 255, 255) solid;
+}
+.playBut{
+    width: 33.3%;
+    height: 33.3%;
+    font-size: 200px;
+    background-color: rgb(229, 255, 0);
+    color: black;
+    border: 0;
+}
+#button1,#button3,#button5,#button7,#button9{
+    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+}
+footer{
+    height: 80px;
+    background-color: bisque;
+}
+@media screen and (max-width:1026px){
+    nav button{
+        width: 70px;
+        height: 50px;
+    }
+}
+@media screen and (max-width:720px){
+    .hed{
+        gap: 6px;
+    }
+    .hed nav{
+        gap: 4px;
+    }
+    nav button{
+        width: 45px;
+        height: 35px;
+        font-size: 10px;
+    }
+    .timer{
+        font-size: 10px;
+        width: 50px;
+    }
+    #result{
+        font-size: 10px;
+        width: 50px;
+        
+    }
+    main .container{
+        width: 300px;
+        height: 300px;
+    }
+    .playBut{
+        font-size: 100px;
+    }
+    footer{
+        height: 250px; 
+    }
+
+}
+@media screen and (max-width:460px){
+    .hed nav{
+        gap: 4px;
+    }
+    nav button{
+        width: 40px;
+        height: 25px;
+        font-size: 8px;
+    }
+    footer{
+        height: 250px; 
+    }
+
+}
+@media screen and (max-width:365px){
+    .hed{
+        gap: 2px;
+    }
+    .hed nav{
+        gap: 2px;
+    }
+    nav button{
+        width: 30px;
+        height: 25px;
+        font-size: 6px;
+    }
+    .timer{
+        font-size: 8px;
+        width: 35px;
+    }
+    #result{
+        font-size: 6px;
+        width: 35px;
+        
+    }
+    main .container{
+        width: 200px;
+        height: 200px;
+    }
+    .playBut{
+        font-size: 80px;
+    }
+    footer{
+        height: 250px; 
+    }
+
+}
+    
