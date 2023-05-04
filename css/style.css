@@ -124,6 +124,10 @@ footer{
     nav button{
         font-size: 3.5vw;
     }
+    main .container{
+        width: 100vw;
+        height: 70vh;
+    }
 }   
 @media screen and (max-width:460px){
 }  
