@@ -16,7 +16,7 @@
 }
 body{
     margin: 0 auto;
-    width: 98.9vw;
+    width: 100vw;
     height: 100vh ;
 }
 .hed{
@@ -109,7 +109,7 @@ main .container{
     display: none;
 }
 footer{
-    height: 80px;
+    height: 35vh;
     background-color: bisque;
 }
 @media screen and (max-width:920px){
@@ -121,6 +121,7 @@ footer{
     }
 }
 @media screen and (max-width:700px){
+
     nav button{
         font-size: 3.5vw;
     }
@@ -130,6 +131,9 @@ footer{
     }
     .playBut{
         font-size: 30vw;
+    }
+    footer{
+
     }
 }   
 @media screen and (max-width:460px){
