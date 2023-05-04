@@ -1,8 +1,12 @@
-.container.floyd{
+.container-floyd{
     width: 100%;
+    max-height: 100%;
+}
+#div2{
+    background-color: bisque;
 }
 .container{
-    width: 900px;
+    width: 59%;
 }
 .center{
     display: flex;
@@ -12,68 +16,92 @@
 }
 body{
     margin: 0 auto;
+    width: 98.9vw;
+    height: 100vh ;
 }
 .hed{
     background-color: black;
     color: azure;
-    gap: 16px;
+    gap: 1vw;
+    padding: 1vh;
 }
 
-.hed nav{
-    height: 80px;
-    gap: 8px;
-    width: fit-content;
-
+.hed>nav{
+    width: 50%;
+    /* height: 10vh; */
+    gap: 0.5vw;
+    flex-wrap: wrap;
+    padding: 1vw;
 }
 nav button{
-    width: 100px;
-    height: 50px;
+    width: fit-content;
+    height: fit-content;
     background-color: brown;
     border: 2px white solid;
+    font-size: 2vw;
     border-radius: 10%;
+    padding: 0.7%;
     
 }
 #result{
     flex-direction: column;
     width: fit-content; 
-    height: 80px;
+    font-size: 2vw;
    
 }
 .timer{
-    width: 80px;
-    flex-wrap: wrap;
+    width:fit-content;
+    flex-direction: column;
     gap: 2px;
 }
+.timer .s{
+    width: fit-content;
+    font-size: 2vw;
+}
+
+.timer .b{
+    height: fit-content;
+    width: fit-content;
+    gap: 0.5vw;
+}
 .timer button{
-    width: 45%;
-    height: 45%;
+    width: fit-content;
+    height: fit-content;
     background-color: brown;
     border: 2px white solid;
+    font-size: 1.5vw;
     border-radius: 10%;
-    font-size: 80%;
+    padding: 0.7%;
     display: flex;
     justify-content: center;
 }
+
 main{
     background-color: rgba(0, 0, 0, 0.611);
 }
 main .container{
-    width: 600px;
-    height: 600px;
+    width: 50%;
+    height: 34vw;
     display: flex;
     flex-wrap: wrap;
     border-radius: 5%;
-    border: 25px rgb(255, 255, 255) solid;
+    border: 3vw rgb(255, 255, 255) solid;
 }
 .playBut{
     width: 33.3%;
     height: 33.3%;
-    font-size: 200px;
+    /* width: fit-content;
+    height: fit-content; */
+    font-size: 11vw;
     background-color: rgb(229, 255, 0);
     color: black;
     border: 0;
 }
 #button1,#button3,#button5,#button7,#button9{
+    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+}
+#b1-1,#b1-3,#b2-2,#b3-1,#b3-3,#b4-2,#b5-1,#b5-3{
     color: aliceblue;
     background-color: rgb(0, 0, 0);
 }
@@ -84,93 +112,21 @@ footer{
     height: 80px;
     background-color: bisque;
 }
-@media screen and (max-width:1026px){
-    nav button{
-        width: 70px;
-        height: 50px;
-    }
-}
-@media screen and (max-width:720px){
-    .hed{
-        gap: 6px;
-    }
-    .hed nav{
-        gap: 4px;
-    }
-    nav button{
-        width: 45px;
-        height: 35px;
-        font-size: 10px;
-    }
-    .timer{
-        font-size: 10px;
-        width: 50px;
-    }
-    #result{
-        font-size: 10px;
-        width: 50px;
-        
-    }
-    main .container{
-        width: 300px;
-        height: 300px;
-    }
-    .playBut{
-        font-size: 100px;
-    }
-    footer{
-        height: 250px; 
-    }
-
-}
-@media screen and (max-width:460px){
-    .hed nav{
-        gap: 4px;
-    }
-    nav button{
-        width: 40px;
-        height: 25px;
-        font-size: 8px;
-    }
-    footer{
-        height: 250px; 
-    }
-
-}
-@media screen and (max-width:369px){
-    .hed{
-        gap: 2px;
-    }
-    .hed nav{
-        gap: 2px;
-    }
-    nav button{
-        width: 30px;
-        height: 25px;
-        font-size: 6px;
-    }
-    .timer{
-        font-size: 8px;
-        width: 35px;
-    }
+@media screen and (max-width:920px){
     .timer button{
-        font-size: 70%;
+        font-size: 2vw;
     }
-    #result{
-        font-size: 6px;
-        width: 35px;
-        
+    .timer .s span{
+        font-size: 2.5vw;
     }
-    main .container{
-        width: 200px;
-        height: 200px;
-    }
-    .playBut{
-        font-size: 80px;
-    }
-    footer{
-        height: 250px; 
-    }
-
 }
-    
+@media screen and (max-width:700px){
+    nav button{
+        font-size: 3.5vw;
+    }
+}   
+@media screen and (max-width:460px){
+}  
+@media screen and (max-width:369px){   
+}
+   

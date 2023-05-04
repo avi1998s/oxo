@@ -75,7 +75,6 @@ function restart (){
     playerO.position=[]
     player=playerO
     allbuttons.forEach(b=>b.innerText="")
-    changePlayer()
 }
 
 function changePlayer () {
@@ -100,18 +99,23 @@ function recordFun(){
 }
 // שמירה וטעינה
 function saveFun(){
+    localStorage.removeItem("xPlayer")
+    localStorage.removeItem("oPlayer")
     let xSet =new Set(playerX.position)
     let oSet =new Set(playerO.position)
     localStorage.setItem("xPlayer", JSON.stringify([...xSet]))
     localStorage.setItem("oPlayer", JSON.stringify([...oSet]))
     localStorage.setItem("steps", JSON.stringify(stepsCunter))
+    localStorage.setItem("player", JSON.stringify(player))
 }
 function relodFun () {
     allbuttons.forEach(b=>b.style.color="white")
     allbuttons.forEach(b=>b.innerText="")
-    let x = JSON.parse(localStorage.getItem("xPlayer")).flat(2)
-    let o = JSON.parse(localStorage.getItem("oPlayer")).flat(2)
+    let x = JSON.parse(localStorage.getItem("xPlayer"))
+    let o = JSON.parse(localStorage.getItem("oPlayer"))
+    let p = JSON.parse(localStorage.getItem("player"))
     let steps = JSON.parse(localStorage.getItem("steps"))
+    player!=p
     for (i of x){
         allbuttons.forEach(b=>{
             if (b.id==`button${i}`){
@@ -129,12 +133,13 @@ function relodFun () {
     playerO.position=o
     playerX.position=x
     stepsCunter=steps
-    console.log(stepsCunter);
 }
 // 
 function clearLs (){
     localStorage.clear()
     spanRecord.innerText=""
+    playerO.position=[]
+    playerX.position=[]
 }
 restartButton.onclick=()=>restart()
 undoButton.onclick=()=>undo()
