@@ -172,4 +172,37 @@ footer{
     }
 
 }
+@media screen and (max-width:100px){
+    .hed{
+        gap: 2px;
+    }
+    .hed nav{
+        gap: 2px;
+    }
+    nav button{
+        width: 30px;
+        height: 25px;
+        font-size: 6px;
+    }
+    .timer{
+        font-size: 8px;
+        width: 35px;
+    }
+    #result{
+        font-size: 6px;
+        width: 35px;
+        
+    }
+    main .container{
+        width: 200px;
+        height: 200px;
+    }
+    .playBut{
+        font-size: 80px;
+    }
+    footer{
+        height: 250px; 
+    }
+
+}
     

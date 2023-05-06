@@ -18,18 +18,34 @@ let allbuttons =[...document.getElementsByClassName("playBut")]
 function getELM (id){
     return document.getElementById(id);
 }
-function gameClick(e){
+// function gameClick(e){
+//     button = e.target
+//     buttonId =Number(button.id.slice(6)) 
+//     button.style.color="white"
+//     if (button.innerText==""){
+//         stepsCunter++
+//         changePlayer()
+//         player.position.push(buttonId)
+//         arrAll.push(buttonId)
+//         button.innerText=player.val
+//     }
+//     checkWin(player)
+//     oSpan.innerText=playerO.record
+//     xSpan.innerText=playerX.record
+// }
+function gameClick2(e){
     button = e.target
-    buttonId =Number(button.id.slice(6)) 
+    buttonId =Number(button.id.slice(1,2)) 
+    buttonId2 =Number(button.id.slice(3)) 
     button.style.color="white"
     if (button.innerText==""){
         stepsCunter++
         changePlayer()
-        player.position.push(buttonId)
-        arrAll.push(buttonId)
+        arrAll[buttonId-1][buttonId2-1]=player.val
         button.innerText=player.val
     }
-    checkWin(player)
+    console.log(arrAll);
+    checkWin2(player)
     oSpan.innerText=playerO.record
     xSpan.innerText=playerX.record
 }
@@ -56,8 +72,26 @@ function checkWin (_pla){
     }
 }
 function checkWin2 (Cplayer) {
-    if (arrAll[buttonId-1]==buttonId){
-        console.log(arrAll);
+    let coll =0
+    let row =0
+    let crl =0
+    let crr =0
+    for (i of arrAll){
+        // for (j of i){
+        //     if (j == player.val){
+        //         coll++
+        //     }
+        // }
+        if (i[buttonId1]==player.val){
+            coll++
+        }
+        if (i[buttonId2]==player.val){
+            row++
+        }
+        if (row==i.length||coll==i.length){
+            console.log("win");
+        }
+
     }
 }
 function restart (){

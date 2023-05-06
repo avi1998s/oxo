@@ -12,10 +12,11 @@ let stepsCunter = 0
 let recordArr= []
 // ---------------------------------------------------
 // פיתרון עם מערך 1
-let arrAll=[]
-    allbuttons.forEach(i=>{
-        i.addEventListener("click",gameClick)
-    })
+let arrAll=[[],[],[]]
+
+allbuttons.forEach(i=>{
+    i.addEventListener("click",gameClick2)
+})
 
 // הגדרות
 restartButton.onclick=()=>restart()

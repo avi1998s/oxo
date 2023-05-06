@@ -46,13 +46,13 @@ appendTo(crateELM("button","","stopbtu","stop"),".timer")
 appendTo(crateELM("div","container-floyd center",""),"main"),appendTo(crateELM("div","container"),"#main > div")
 // כפתורי משחק
 
-// for (i=1;i<4;i++){
-//     for (j=1;j<4;j++){
-//         appendTo(crateELM("button","playBut center",`b${i}-${j}`),"#main .container")
-//     }
-// }
-for (i=1;i<10;i++){
-    appendTo(crateELM("button","playBut center",`button${i}`),"#main .container")
-}   
+for (i=1;i<4;i++){
+    for (j=1;j<4;j++){
+        appendTo(crateELM("button","playBut center",`b${i}-${j}`),"#main .container")
+    }
+}
+// for (i=1;i<10;i++){
+//     appendTo(crateELM("button","playBut center",`button${i}`),"#main .container")
+// }   
 // -----------------------------------------------------------------------------------------------------------------
 
