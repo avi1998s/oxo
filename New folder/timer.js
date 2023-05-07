@@ -1,4 +1,4 @@
-// window.onload=start
+window.onload=start
 let secends=0
 let minuts=0
 let overs=0
