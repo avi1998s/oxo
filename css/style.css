@@ -89,8 +89,6 @@ main .container{
 .playBut{
     width: 33.3%;
     height: 33.3%;
-    /* width: fit-content;
-    height: fit-content; */
     font-size: 11vw;
     background-color: rgb(229, 255, 0);
     color: black;
