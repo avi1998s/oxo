@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XandO</title>
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/index.js"></script>
+    <title>oxo</title>
+    <link rel="stylesheet" href="../oxo_v1/oxo.css">
+    <link rel="shortcut icon" href="../images/icon.JPG" type="image/x-icon">
+    <script defer src="../oxo_v1/oxo_v1.js" ></script>
+    <script defer src="../oxo_v1/timer.js"></script>
 </head>
 <body>
-    <div class="hed container-fluid center">
+    <div class="hed container-floyd center">
         <div id="result" class="center">
             <div>O plaier = <span id="Oresult"></span></div>
             <div>X plaier = <span id="Xresult"></span> </div>
@@ -23,11 +24,15 @@
             <button id="relod"><b>relod</b></button>
             <button id="clear"><b>clear LS</b></button>
         </nav>
-        <div class="timer container center">
-            <div>
-                <span id="milSec">00</span>:
-                <span id="secens">00</span>:
-                <span id="minute">00</span>
+        <div class="timer container center ">
+            <div class="s center">
+                <span id="over">00</span>:
+                <span id="minute">00</span>:
+                <span id="secense">00</span>
+            </div>
+            <div class="b center">
+                <button id="startbtu">start</button>
+                <button id="stopbtu">stop</button>
             </div>
             
         </div>

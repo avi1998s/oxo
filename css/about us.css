@@ -1,0 +1,173 @@
+
+body{
+    margin: 0 auto;
+    
+    background-size: cover;
+    background-position-y: -600px ; 
+    font-family: 'Poppins', sans-serif;
+}
+.hed{
+    height: 80vh;
+    flex-direction: column;
+}
+.hed img{
+    width: 100%;
+    height: 100%;
+
+}
+
+.container-floyd{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content:center;
+}
+.container{
+    width: 80%;
+    min-height: 20%;
+    justify-content: space-between;
+}
+.center{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content:center;
+}
+header .container{
+    height: 80px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content:space-between;
+    margin-top: -10px;
+}
+header .container nav {
+    gap: 16px;
+}
+header .container a{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 16px;
+    display: block;
+}
+#gameLink{
+    color: rgb(255, 0, 0);
+}
+#homeLink{
+    margin-top: 10px;
+}
+#homeLink::after{
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin:8px auto 0px auto;
+    background-color: rgb(255, 0, 0);
+}
+.strip{
+    color: rgb(255, 255, 255);
+    height: 50vh;
+    font-size: 3vh;
+    position: sticky;
+}
+.strip h2{
+    font-size: 25px;
+}
+main{
+    background-color: rgb(255, 251, 246);
+    height: fit-content;
+    padding: 50px 0;
+    
+}
+main .container{
+    flex-wrap: wrap;
+    /* gap: 15px;     */
+}
+.item{
+    gap: 25px; 
+    width: 70%;
+    height:fit-content ;
+    padding: 56px 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2%;
+    flex-direction: column;
+    box-shadow: 0px 2px 25px 25px rgba(0,0,0,0.15);
+}
+.item:hover{
+    box-shadow:0px 2px 25px 25px rgba(0,0,0,0.10);
+}
+.item h2{
+    width: 90%;
+    text-align: left;
+    font-weight: 900;
+}
+.item span{
+    width: 90%;
+    font-size: 22px;
+    text-align: left;
+}
+#logos{
+    width: 90%;
+    height: 6vh;
+    gap: 16px;
+    height: 10%;
+}
+#logos div{
+    background-color: black;
+    width: 5%;
+    height: 20%;
+    padding: 10px;
+    font-size: 26px;
+    border-radius: 8px 8px 8px 8px;
+    transition: 0.3s;
+
+}
+#logos div:hover{
+    padding: 8px 5px;
+    transition: 0.3s;
+}
+#logos div a{
+    color: white;
+}
+#logos div a:hover{
+    color: rgb(255, 0, 0);
+}
+
+footer{
+    background-color: black;
+    color: aliceblue;
+    height: 7vh;
+}
+@media screen and (max-width: 700px){
+    body{
+        background-position-x: -500px ;
+
+    }
+    main .item{
+        width: 80vw;
+    }
+    
+}
+@media screen and (max-width: 505px){
+    body{
+        background-position-x: -600px ;
+
+    }
+    .item span{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 321px){
+
+    header .container a{
+        font-size: 10px;
+    }
+    #logos{
+        gap: 8px;
+    }
+    #logos div{
+        width: 35px;
+        height: 35px;
+    }
+}

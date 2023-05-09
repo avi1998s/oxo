@@ -77,7 +77,7 @@ function appendTo(element, appendTO) {
   let bordSize;
   while (true) {
     bordSize = prompt("enter bord size bettwen 3-5");
-    if (bordSize == 5 || bordSize == 4 || bordSize == 3) {
+    if (bordSize == 5 || bordSize == 4 || bordSize == 3|| bordSize == 7) {
       break;
     }
   }
@@ -173,6 +173,38 @@ function appendTo(element, appendTO) {
       };
       mediaQuery920_5.addListener(hendelMediaQuery920_5);
       hendelMediaQuery920_5(mediaQuery920_5);
+  
+      // 700----------------------------------------------------------------------
+      const mediaQuery700_5 = window.matchMedia("(max-width: 700px)");
+      const hendelMediaQuery700_5 = (e) => {
+        if (e.matches) {
+          allbuttons.forEach((b) => (b.style.fontSize = "15vw"));
+        } else {
+          allbuttons.forEach((b) => (b.style.fontSize = "3vw"));
+        }
+      };
+      mediaQuery700_5.addListener(hendelMediaQuery700_5);
+      hendelMediaQuery700_5(mediaQuery700_5);
+    }if (bordSize == 7) {
+      // 920----------------------------------------------------------------------
+      const mediaQuery920_7 = window.matchMedia("(max-width: 920px)");
+      const hendelMediaQuery920_7 = (e) => {
+        if (e.matches) {
+          getElemQ("main .container").style.width = "100%";
+          getElemQ("main .container").style.height = "70vh";
+          allbuttons.forEach((b) => (b.style.fontSize = "5vw"));
+          allbuttons.forEach((b) => (b.style.width = "20%"));
+          allbuttons.forEach((b) => (b.style.height = "20%"));
+        } else {
+          getElemQ("main .container").style.width = "100vw";
+          getElemQ("main .container").style.height = "100vw";
+          allbuttons.forEach((b) => (b.style.fontSize = "5vw")); // 10vw instead of 8vw
+          allbuttons.forEach((b) => (b.style.width = "14.28%"));
+          allbuttons.forEach((b) => (b.style.height = "14.28%"));
+        }
+      };
+      mediaQuery920_7.addListener(hendelMediaQuery920_7);
+      hendelMediaQuery920_7(mediaQuery920_7);
   
       // 700----------------------------------------------------------------------
       const mediaQuery700_5 = window.matchMedia("(max-width: 700px)");
