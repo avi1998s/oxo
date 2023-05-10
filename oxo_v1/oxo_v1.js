@@ -35,7 +35,7 @@ function getELM (id){
 function gameClick(e){
     button = e.target
     buttonId =Number(button.id.slice(6)) 
-    button.style.color="white"
+    // button.style.color="white"
     if (button.innerText==""){
         stepsCunter++
         changePlayer()
@@ -75,6 +75,10 @@ function restart (){
     playerO.position=[]
     player=playerO
     allbuttons.forEach(b=>b.innerText="")
+    let a = [...document.getElementsByClassName("butA")]
+    let b = [...document.getElementsByClassName("butB")]
+    a.forEach(b=>b.style.color="white")
+    b.forEach(b=>b.style.color="black")
 }
 
 function changePlayer () {
