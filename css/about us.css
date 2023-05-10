@@ -159,7 +159,7 @@ footer{
 }
 @media screen and (max-width: 505px){
     body{
-        background-position-x: -600px ;
+        /* background-position-x: -400px ; */
 
     }
     .item span{
