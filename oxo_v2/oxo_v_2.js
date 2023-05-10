@@ -86,6 +86,8 @@ let recordArr = [];
 let arrAll = [];
 let allbuttons
 let bordSize
+let bA
+let bB
 msgf()
 
 function msgf(board) {
@@ -97,7 +99,8 @@ function msgf(board) {
       makeButoons(board)
       styleB(board)
       getELM("msgH").style.display = "none";
-      
+      bA= [...document.querySelectorAll(".butA")]
+      bB= [...document.querySelectorAll(".butB")]      
     });
   });
 }
@@ -251,7 +254,7 @@ function getELM(id) {
   return document.getElementById(id);
 }
 function gameClick2(e) {
-
+  
   button = e.target;
   buttonId = Number(button.id.slice(1, 2)) - 1;
   buttonId2 = Number(button.id.slice(3)) - 1;
@@ -315,7 +318,10 @@ function restart() {
     arrAll.push([]);
   }
   player = playerO;
-  allbuttons.forEach((b) => (b.innerText = ""));
+  allbuttons.forEach(b=>b.innerText="" )
+  bA.forEach(b=>b.style.color="white")
+  bB.forEach(b=>b.style.color="black")
+
 }
 
 function changePlayer() {
@@ -353,8 +359,6 @@ function relodFun() {
   allbuttons.forEach((b) => (b.style.color = "white"));
   allbuttons.forEach((b) => (b.innerText = ""));
   let arr = JSON.parse(localStorage.getItem("winArr"));
-  // let x = JSON.parse(localStorage.getItem("xPlayer"))
-  // let o = JSON.parse(localStorage.getItem("oPlayer"))
   let p = JSON.parse(localStorage.getItem("player"));
   let steps = JSON.parse(localStorage.getItem("steps"));
   player != p;
@@ -373,12 +377,15 @@ function clearLs() {
 
 // הגדרות
 restartButton.onclick = () => restart();
-undoButton.onclick = () => undo();
-recordButton.onclick = recordFun;
-saveButton.onclick = saveFun;
-relodButton.onclick = relodFun;
-clearBtutton.onclick = clearLs;
+// undoButton.onclick = () => undo();
+// recordButton.onclick = recordFun;
+// saveButton.onclick = saveFun;
+// relodButton.onclick = relodFun;
+// clearBtutton.onclick = clearLs;
 
 oSpan.innerText = playerO.record;
 xSpan.innerText = playerX.record;
+
+
+// לשים בריסטארט ולעדכן תגלובלי בפונקציה הראשונה
 
