@@ -18,6 +18,38 @@ body{
     margin: 0 auto;
     width: 100vw;
     height: 100vh ;
+    background-color: rgb(0, 0, 0);
+}
+#msgH{
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+}
+#msgH>h2,#msgH>div{
+    width: fit-content;
+    height: fit-content;
+}
+#msgH>div {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#msgH h2{
+    margin: 0;
+    font-size: 12vw;
+    color: antiquewhite;
+    text-align: center;
+}
+#msgH div button{
+    font-size: 50px;
+    background-color: black;
+    color: antiquewhite; 
 }
 .hed{
     background-color: black;
@@ -89,6 +121,14 @@ main .container{
     margin: 25px 0;
     box-shadow: 0px 2px 25px 25px rgba(0, 0, 0, 0.233);
 }
+.playBut{
+    border: 0;
+    transition: 0.3s;
+}
+.playBut:hover{
+    background-color: orange;
+    transition: 0.3s;
+}
 .butA{
     background-color: rgb(4, 4, 4);
     color: rgb(255, 255, 255);
@@ -98,22 +138,11 @@ main .container{
     background-color: rgb(255, 251, 246);
     color: rgb(0, 0, 0);
 }
-.playBut{
-    border: 0;
-    transition: 0.3s;
-}
-.playBut:hover{
-    background-color: orange;
-    transition: 0.3s;
-}
 
 #msg{
     display: none;
 }
-footer{
-    height: 10vh;
-    background-color: rgb(0, 0, 0);
-}
+
 @media screen and (max-width:920px){
     .timer button{
         font-size: 2vw;
@@ -134,6 +163,9 @@ footer{
     }
     nav button{
         font-size: 3.5vw;
+    }
+    #msgH>div {
+        padding: 0 30px;
     }
 
 }   
@@ -158,9 +190,7 @@ footer{
         width: 35px;
         
     }
-    footer{
-        height: 250px; 
-    }
+
 
 }
     
