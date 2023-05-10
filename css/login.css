@@ -2,7 +2,9 @@
 body{
     margin: 0 auto;
     background-size: cover;
-    background-position-y: -200px ; 
+    background-position-y: -200px ;
+    background-attachment: fixed;
+ 
     font-family: 'Poppins', sans-serif;
 }
 .hed{

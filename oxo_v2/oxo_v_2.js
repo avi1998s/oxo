@@ -381,7 +381,7 @@ restartButton.onclick = () => restart();
 // recordButton.onclick = recordFun;
 // saveButton.onclick = saveFun;
 // relodButton.onclick = relodFun;
-// clearBtutton.onclick = clearLs;
+clearBtutton.onclick = clearLs;
 
 oSpan.innerText = playerO.record;
 xSpan.innerText = playerX.record;
