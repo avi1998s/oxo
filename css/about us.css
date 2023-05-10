@@ -159,7 +159,6 @@ footer{
 }
 @media screen and (max-width: 505px){
     body{
-        /* background-position-x: -400px ; */
         background-position-y: -200px ;
 
     }
