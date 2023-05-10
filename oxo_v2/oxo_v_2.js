@@ -75,23 +75,25 @@ function appendTo(element, appendTO) {
   // ?---------------------------------------------------------------?
   let arrAll = [];
   let bordSize;
+  let cunter=1
   while (true) {
     bordSize = prompt("enter bord size bettwen 3-5");
     if (bordSize == 5 || bordSize == 4 || bordSize == 3|| bordSize == 7) {
       break;
     }
   }
+
   for (i = 1; i <= bordSize; i++) {
-    arrAll.push([]);
+    arrAll.push([])
     for (j = 1; j <= bordSize; j++) {
-      appendTo(
-        crateELM("button", "playBut center", `b${i}-${j}`),
-        "#main .container"
-      );
+      let className =(cunter%2==0)?"playBut butB center":"playBut butA center"
+      appendTo(crateELM("button", className, `b${i}-${j}`),"#main .container");
+      (cunter == 2) ? cunter = 1 : cunter = 2;
+      if (bordSize==4&&j==4){(cunter == 2) ? cunter = 1 : cunter = 2}
     }
   }
   
-  let allbuttons = [...document.getElementsByClassName("playBut")];
+let allbuttons = [...document.getElementsByClassName("playBut")];
   
   allbuttons.forEach((b) => {
     b.addEventListener("click", gameClick2);

@@ -25,7 +25,14 @@ body{
     gap: 1vw;
     padding: 1vh;
 }
-
+.hed button{
+    background-color: rgb(255, 251, 246);
+    border: 2px rgb(101, 96, 96) solid;
+}
+.hed button:hover{
+    background-color: orange;
+    transition: 0.3s;
+}
 .hed>nav{
     width: 50%;
     gap: 0.5vw;
@@ -35,12 +42,14 @@ body{
 nav button{
     width: fit-content;
     height: fit-content;
-    background-color: brown;
-    border: 2px white solid;
     font-size: 2vw;
     border-radius: 10%;
     padding: 0.7%;
-    
+    transition: 0.3s;
+}
+.hed button:hover{
+    background-color: orange;
+    transition: 0.3s;
 }
 #result{
     flex-direction: column;
@@ -63,10 +72,8 @@ nav button{
     gap: 0.5vw;
 }
 .timer button{
-    width: 49%;
-    height: 49%;
-    background-color: brown;
-    border: 2px white solid;
+    width: fit-content;
+    height: fit-content;
     font-size: 1.5vw;
     border-radius: 10%;
     padding: 0.7%;
@@ -75,36 +82,42 @@ nav button{
 }
 
 main{
-    background-color: rgba(0, 0, 0, 0.611);
+    background-color: rgb(255, 251, 246);
 }
 main .container{
     width: 50%;
     height: 34vw;
     display: flex;
     flex-wrap: wrap;
-    border-radius: 5%;
-    border: 2vw rgb(255, 255, 255) solid;
+    margin: 25px 0;
+    box-shadow: 0px 2px 25px 25px rgba(0, 0, 0, 0.184);
+}
+.butA{
+    background-color: rgb(4, 4, 4);
+    color: rgb(255, 255, 255);
+
+}
+.butB{ 
+    background-color: rgb(255, 251, 246);
+    color: rgb(0, 0, 0);
 }
 .playBut{
-    background-color: rgb(229, 255, 0);
-    color: rgb(255, 255, 255);
+    width: 33.3%;
+    height: 33.3%;
+    font-size: 11vw;
     border: 0;
+    transition: 0.3s;
 }
-
-#b1-1,#b1-3,#b1-5,#b2-2,#b2-4,#b3-1,#b3-3,#b3-5,#b4-2,#b4-4,#b5-1,#b5-3 {
-    color: aliceblue;
-    background-color: rgb(0, 0, 0);
-}
-#b1-7,#b2-8,#b3-7,#b4-8,#b5-7,#b7-8,#b7-7 ,#b2-6,#b4-6,#b5-5,#b6-2,#b6-4,#b6-6,#b7-1,#b7-3,#b7-5{
-    color: aliceblue;
-    background-color: rgb(0, 0, 0);
+.playBut:hover{
+    background-color: orange;
+    transition: 0.3s;
 }
 #msg{
     display: none;
 }
 footer{
-    height: 35vh;
-    background-color: bisque;
+    height: 10vh;
+    background-color: rgb(17, 16, 15);
 }
 @media screen and (max-width:920px){
     .timer button{
@@ -127,7 +140,13 @@ footer{
     nav button{
         font-size: 3.5vw;
     }
-
+    main .container{
+        width: 100%;
+        height: 70vh;
+    }
+    .playBut{
+        font-size: 30vw;
+    }
 }   
 @media screen and (max-width:100px){
     .hed{
@@ -149,6 +168,13 @@ footer{
         font-size: 6px;
         width: 35px;
         
+    }
+    main .container{
+        width: 200px;
+        height: 200px;
+    }
+    .playBut{
+        font-size: 80px;
     }
     footer{
         height: 250px; 

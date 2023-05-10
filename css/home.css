@@ -118,14 +118,13 @@ main .container{
 }
 .item{
     width: 35%;
-    /* width: fit-content; */
     height:30vh ;
     background-color: rgb(255, 255, 255);
     border-radius: 5%;
     flex-direction: column;
     box-shadow: 0px 2px 25px 25px rgba(0,0,0,0.15);
     position: relative;
-    gap: 10px;
+    gap: 25px;
 }
 .item:hover{
     box-shadow:0px 2px 25px 25px rgba(0,0,0,0.10);
