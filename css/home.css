@@ -2,7 +2,9 @@ body{
     margin: 0 auto;
     background-size: cover;
     /* ליגלול את התמונכה יפה  */
-    background-position-y: -400px ; 
+    background-position: bottom;
+    background-position-y: -250px; 
+    background-position-x: center; 
     background-attachment: fixed;
     font-family: 'Poppins', sans-serif;
 }
@@ -190,9 +192,7 @@ footer{
     flex-direction: column;
     height: fit-content;
     }
-    body{
-        background-position-x: -500px;
-    }
+
     main .item{
         width: 100%;
         height: fit-content;
@@ -204,11 +204,16 @@ footer{
     
 }
 
+@media screen and (max-width: 500px){
+    body{
+        background-position-x: -500px;
+    }
+}
 @media screen and (max-width: 310px){
     header .container a{
         font-size: 10px;
     }
     body{
-        background-position-x: -600px;
+        background-position-x: -700px;
     }
 }
