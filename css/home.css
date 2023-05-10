@@ -187,6 +187,9 @@ footer{
     flex-direction: column;
     height: fit-content;
     }
+    body{
+        background-position-x: -500px;
+    }
     main .item{
         width: 100%;
         height: fit-content;
@@ -197,8 +200,12 @@ footer{
     }
     
 }
+
 @media screen and (max-width: 310px){
     header .container a{
         font-size: 10px;
+    }
+    body{
+        background-position-x: -600px;
     }
 }
