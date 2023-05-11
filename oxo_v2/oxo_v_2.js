@@ -1,47 +1,26 @@
-window.onload = () => {
-  // msgf()
-};
-function appendTo(element, appendTO) {
-  getElemQ(appendTO).append(element);
-}
-function getElemQ(selctor) {
-  return document.querySelector(selctor);
-}
-function crateELM(
-  elementName,
-  elementClass = "",
-  elementId = "",
-  innerHTML = ""
-) {
-  let e = document.createElement(elementName);
-  e.className = elementClass;
-  e.id = elementId;
-  e.innerHTML = innerHTML;
-  return e;
-}
-// דיבים ראשים
+
+// body--------------------------------------------------------------------------body
 appendTo(crateELM("div", "center", "msgH"), "body");
 appendTo(crateELM("div", "hed container-fluid center"), "body");
 appendTo(crateELM("main", "a", "main"), "body");
-// דיבים משנה הודעה
-
+// msgH--------------------------------------------------------------------------msgH
 appendTo(crateELM("h2", "", "", "choose board size"), "#msgH");
 appendTo(crateELM("div"), "#msgH");
 appendTo(crateELM("button", "", "c3", "3X3"), "#msgH > div");
 appendTo(crateELM("button", "", "c4", "4X4"), "#msgH > div");
 appendTo(crateELM("button", "", "c5", "5X5"), "#msgH > div");
 appendTo(crateELM("button", "", "c7", "7X7"), "#msgH > div");
-// דיבים מישנה הד
+// hed-------------------------------------------------------------------------------hed
 appendTo(crateELM("div", "center", "result"), ".hed");
 appendTo(crateELM("nav", "container center"), ".hed");
 appendTo(crateELM("div", "timer container center"), ".hed");
-// ניקוד
+// result
 appendTo(crateELM("div", "", "result2", "X pleyer = "), "#result");
 appendTo(crateELM("div", "", "result1", "O pleyer = "), "#result");
-// ספאנים של ניצחונות שחקנים
+// result spans
 appendTo(crateELM("span", "", "Oresult"), "#result1"),
   appendTo(crateELM("span", "", "Xresult"), "#result2");
-// כפתורי תפריט
+// nav buttons
 appendTo(crateELM("button", "", "ristart", "<b>new game</b>"), ".hed nav");
 appendTo(crateELM("button", "", "undo", "<b>undo</b>"), ".hed nav");
 appendTo(crateELM("button", "", "record", "<b>record:</b>"), ".hed nav");
@@ -59,14 +38,9 @@ appendTo(":", ".timer .s");
 appendTo(crateELM("span", "", "secense", "00"), ".timer .s");
 appendTo(crateELM("button", "", "startbtu", "start"), ".timer .b");
 appendTo(crateELM("button", "", "stopbtu", "stop"), ".timer .b");
-// -------------------------------------------------------------------------
-
-// דיבים ראשיים מאין
+//main-------------------------------------------------------------------------main
 appendTo(crateELM("div", "container-floyd center", ""), "main"),
-  appendTo(crateELM("div", "container"), "#main > div");
-// כפתורי משחק
-// ---------------------------------------------------
-// פיתרון עם מערך 1
+appendTo(crateELM("div", "container"), "#main > div");
 let restartButton = getELM("ristart");
 let undoButton = getELM("undo");
 let recordButton = getELM("record");
@@ -77,18 +51,19 @@ let clearBtutton = getELM("clear");
 let spanRecord = getELM("spanRecord");
 let xSpan = getELM("Xresult");
 let oSpan = getELM("Oresult");
-// משתנים גלובלים
-let playerX = { val: "X", record: 0 };
-let playerO = { val: "O", record: 0 };
+// משתנים גלובלים-------------------------------------------------------------------------------------------
+let playerX = { val: "X", record: 0,position:[]};
+let playerO = { val: "O", record: 0,position:[]};
 let player = playerO;
 let stepsCunter = 0;
 let recordArr = [];
 let arrAll = [];
 let allbuttons
 let bordSize
-let bA
-let bB
+let classA
+let classB
 msgf()
+// יצירת לוח--------------------------------------------------------------------------------
 
 function msgf(board) {
   let msgDiv = [...document.querySelectorAll("#msgH button")];
@@ -99,8 +74,8 @@ function msgf(board) {
       makeButoons(board)
       styleB(board)
       getELM("msgH").style.display = "none";
-      bA= [...document.querySelectorAll(".butA")]
-      bB= [...document.querySelectorAll(".butB")]      
+      classA= [...document.querySelectorAll(".butA")]
+      classB= [...document.querySelectorAll(".butB")]      
     });
   });
 }
@@ -119,7 +94,6 @@ function makeButoons(board) {
       }
   }
 }
-
 function styleB (bordSize){
    allbuttons = [...document.getElementsByClassName("playBut")];
   allbuttons.forEach((b) => {
@@ -250,25 +224,23 @@ function styleB (bordSize){
   }
 });
 }
-function getELM(id) {
-  return document.getElementById(id);
-}
+// game and win functions--------------------------------------------------------
 function gameClick2(e) {
   
   button = e.target;
   buttonId = Number(button.id.slice(1, 2)) - 1;
   buttonId2 = Number(button.id.slice(3)) - 1;
   if (button.innerText == "") {
-    stepsCunter++;
     changePlayer();
+    stepsCunter++;
     arrAll[buttonId][buttonId2] = player.val;
     button.innerText = player.val;
+    player.position.push([buttonId+1,buttonId2+1])
   }
   checkWin2(player);
   oSpan.innerText = playerO.record;
   xSpan.innerText = playerX.record;
 }
-
 function checkWin2(Cplayer) {
   let row = 0;
   let coll = 0;
@@ -296,9 +268,9 @@ function checkWin2(Cplayer) {
     cunetrL >= arrAll.length ||
     cunetrR < 0
   ) {
+    recordArr.push(stepsCunter);
     localStorage.setItem("record", JSON.stringify(recordArr));
     player.record++;
-    recordArr.push(stepsCunter);
     stepsCunter = 0;
     allbuttons.map((b) => {
       let id = Number(button.id.slice(1, 2));
@@ -312,6 +284,10 @@ function checkWin2(Cplayer) {
     }, 300);
   }
 }
+
+// nav butoons ------------------------------------------------------nav butoons 
+// functions-----------------------------------functions
+// --------------------restart---------
 function restart() {
   arrAll = [];
   for (let i = 0; i < bordSize; i++) {
@@ -319,11 +295,86 @@ function restart() {
   }
   player = playerO;
   allbuttons.forEach(b=>b.innerText="" )
-  bA.forEach(b=>b.style.color="white")
-  bB.forEach(b=>b.style.color="black")
+  classA.forEach(b=>b.style.color="white")
+  classB.forEach(b=>b.style.color="black")
 
 }
+// ---------------------undo------------------
+function undo() {
+  let position=player.position.pop();
+  let p1 = position[0]
+  let p2 = position[1]
+  arrAll[p1-1][p2-1]=undefined
+  getELM(`b${p1}-${p2}`).innerHTML=""
+  changePlayer();
+  if(stepsCunter>0){stepsCunter--}
 
+}
+// --------------clear Local Storage----------
+function clearLs() {
+  localStorage.clear();
+  spanRecord.innerText = "";
+  playerO.position = [];
+  playerX.position = [];
+  recordArr=[]
+}
+// ---------------------record----------------
+function recordFun() {
+  spanRecord.innerText = Math.min(
+    ...JSON.parse(localStorage.getItem("record"))
+  );
+}
+// ----------------------save-----------------
+function saveFun() {
+  localStorage.setItem("winArr", JSON.stringify(arrAll));
+  localStorage.setItem("steps", JSON.stringify(stepsCunter));
+  localStorage.setItem("player", JSON.stringify(player));
+  localStorage.setItem("positionX", JSON.stringify(playerX.position));
+  localStorage.setItem("positionO", JSON.stringify(playerO.position));
+  localStorage.setItem("recordX", JSON.stringify(playerX.record));
+  localStorage.setItem("recordO", JSON.stringify(playerO.record));
+}
+// ---------------------reload----------------
+function relodFun() {
+  // clear board
+  allbuttons.forEach(b=>b.innerText="")
+  // variables
+  let posX = JSON.parse(localStorage.getItem("positionX"));
+  let posO = JSON.parse(localStorage.getItem("positionO"));
+  let recX = JSON.parse(localStorage.getItem("recordX"));
+  let recO = JSON.parse(localStorage.getItem("recordO"));
+  let arr = JSON.parse(localStorage.getItem("winArr"));
+  let pla = JSON.parse(localStorage.getItem("player"));
+  let steps = JSON.parse(localStorage.getItem("steps"));
+  // win arr and steps
+  arrAll = arr;
+  stepsCunter = steps;
+  // players seting
+  player = pla;
+  playerO.position=posO
+  playerX.position=posX
+  playerO.record=recO
+  playerX.record=recX
+  oSpan.innerText = playerO.record;
+  xSpan.innerText = playerX.record;
+  changePlayer(player)
+  // buttons inner
+  for (i=0;i<arrAll.length;i++) {
+    for (j=0;j<arrAll[i].length;j++){
+      getELM(`b${i+1}-${j+1}`).innerText=arrAll[i][j]
+    }
+  }
+}
+// buttons seting-----------------------------------------buttons seting
+restartButton.onclick = () => restart();
+undoButton.onclick = () => undo();
+recordButton.onclick = recordFun;
+saveButton.onclick = saveFun;
+relodButton.onclick = relodFun;
+clearBtutton.onclick = clearLs;
+
+
+// general functions----------------------------------------------------------general functions
 function changePlayer() {
   if (player == playerO) {
     player = playerX;
@@ -331,61 +382,28 @@ function changePlayer() {
     player = playerO;
   }
 }
-
-function undo() {
-  for (var i = 0; i < arrows.length; i++) {}
-  let a = player.position.pop();
-  stepsCunter--;
-  changePlayer();
-  allbuttons.map((b) => {
-    if (b.id == `button${a}`) {
-      b.innerText = "";
-    }
-  });
+function appendTo(element, appendTO) {
+  getElemQ(appendTO).append(element);
 }
-function recordFun() {
-  spanRecord.innerText = Math.min(
-    ...JSON.parse(localStorage.getItem("record"))
-  );
+function getElemQ(selctor) {
+  return document.querySelector(selctor);
 }
-// שמירה וטעינה
-function saveFun() {
-  localStorage.removeItem("winArr");
-  localStorage.setItem("winArr", JSON.stringify(arrAll));
-  localStorage.setItem("steps", JSON.stringify(stepsCunter));
-  localStorage.setItem("player", JSON.stringify(player));
+function getELM(id) {
+  return document.getElementById(id);
 }
-function relodFun() {
-  allbuttons.forEach((b) => (b.style.color = "white"));
-  allbuttons.forEach((b) => (b.innerText = ""));
-  let arr = JSON.parse(localStorage.getItem("winArr"));
-  let p = JSON.parse(localStorage.getItem("player"));
-  let steps = JSON.parse(localStorage.getItem("steps"));
-  player != p;
-  arrAll = arr;
-  stepsCunter = steps;
-  console.log(arr);
-  console.log(arrAll);
+function crateELM(
+  elementName,
+  elementClass = "",
+  elementId = "",
+  innerHTML = ""
+) {
+  let e = document.createElement(elementName);
+  e.className = elementClass;
+  e.id = elementId;
+  e.innerHTML = innerHTML;
+  return e;
 }
-//
-function clearLs() {
-  localStorage.clear();
-  spanRecord.innerText = "";
-  playerO.position = [];
-  playerX.position = [];
-}
-
-// הגדרות
-restartButton.onclick = () => restart();
-// undoButton.onclick = () => undo();
-// recordButton.onclick = recordFun;
-// saveButton.onclick = saveFun;
-// relodButton.onclick = relodFun;
-clearBtutton.onclick = clearLs;
-
+// span record seting----------------------------------------------span record seting
 oSpan.innerText = playerO.record;
 xSpan.innerText = playerX.record;
-
-
-// לשים בריסטארט ולעדכן תגלובלי בפונקציה הראשונה
 

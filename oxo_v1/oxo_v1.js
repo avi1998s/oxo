@@ -86,11 +86,13 @@ function changePlayer () {
         player=playerX
     }
     else{player=playerO}
+    
 }
 
 function undo () {
     let a = player.position.pop()
-    stepsCunter--
+    if (stepsCunter>0){stepsCunter--}
+    console.log(stepsCunter);
     changePlayer()
     allbuttons.map(b=>{
         if(b.id==`button${a}`){
@@ -118,7 +120,7 @@ function relodFun () {
     let o = JSON.parse(localStorage.getItem("oPlayer"))
     let p = JSON.parse(localStorage.getItem("player"))
     let steps = JSON.parse(localStorage.getItem("steps"))
-    player!=p
+    player!=p    
     for (i of x){
         allbuttons.forEach(b=>{
             if (b.id==`button${i}`){
