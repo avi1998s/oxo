@@ -51,20 +51,14 @@ let clearBtutton = getELM("clear");
 let spanRecord = getELM("spanRecord");
 let xSpan = getELM("Xresult");
 let oSpan = getELM("Oresult");
-// משתנים גלובלים-------------------------------------------------------------------------------------------
+// general variables ----------------------------------------general variables
 let playerX = { val: "X", record: 0,position:[]};
 let playerO = { val: "O", record: 0,position:[]};
-let player = playerO;
-let stepsCunter = 0;
-let recordArr = [];
-let arrAll = [];
-let allbuttons
-let bordSize
-let classA
-let classB
+let player = playerO,stepsCunter = 0,recordArr = [],arrAll = [],allbuttons,bordSize,classA,classB
+// ------------------------------------------------------------------------------------------------------------------------------------------
+// board-----------------------------------------------------------board
+// ----------------make board-------------------
 msgf()
-// יצירת לוח--------------------------------------------------------------------------------
-
 function msgf(board) {
   let msgDiv = [...document.querySelectorAll("#msgH button")];
   msgDiv.forEach((b) => {
@@ -95,7 +89,9 @@ function makeButoons(board) {
   }
 }
 function styleB (bordSize){
-   allbuttons = [...document.getElementsByClassName("playBut")];
+  clearLs()
+  saveFun()
+  allbuttons = [...document.getElementsByClassName("playBut")];
   allbuttons.forEach((b) => {
     b.addEventListener("click", gameClick2);
     if (bordSize == 3) {
@@ -224,7 +220,7 @@ function styleB (bordSize){
   }
 });
 }
-// game and win functions--------------------------------------------------------
+// ------------------game and win functions---------------
 function gameClick2(e) {
   
   button = e.target;
@@ -336,8 +332,6 @@ function saveFun() {
 }
 // ---------------------reload----------------
 function relodFun() {
-  // clear board
-  allbuttons.forEach(b=>b.innerText="")
   // variables
   let posX = JSON.parse(localStorage.getItem("positionX"));
   let posO = JSON.parse(localStorage.getItem("positionO"));
@@ -349,6 +343,13 @@ function relodFun() {
   // win arr and steps
   arrAll = arr;
   stepsCunter = steps;
+  // buttons inner
+  allbuttons.forEach(b=>b.innerText="")
+  for (i=0;i<arrAll.length;i++) {
+    for (j=0;j<arrAll[i].length;j++){
+      getELM(`b${i+1}-${j+1}`).innerText=arrAll[i][j]
+    }
+  }
   // players seting
   player = pla;
   playerO.position=posO
@@ -358,19 +359,14 @@ function relodFun() {
   oSpan.innerText = playerO.record;
   xSpan.innerText = playerX.record;
   changePlayer(player)
-  // buttons inner
-  for (i=0;i<arrAll.length;i++) {
-    for (j=0;j<arrAll[i].length;j++){
-      getELM(`b${i+1}-${j+1}`).innerText=arrAll[i][j]
-    }
-  }
+  
 }
 // buttons seting-----------------------------------------buttons seting
 restartButton.onclick = () => restart();
 undoButton.onclick = () => undo();
 recordButton.onclick = recordFun;
 saveButton.onclick = saveFun;
-relodButton.onclick = relodFun;
+relodButton.onclick = relodFun
 clearBtutton.onclick = clearLs;
 
 
