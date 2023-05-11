@@ -113,7 +113,6 @@ function saveFun(){
     localStorage.setItem("player", JSON.stringify(player))
 }
 function relodFun () {
-    allbuttons.forEach(b=>b.style.color="white")
     allbuttons.forEach(b=>b.innerText="")
     let x = JSON.parse(localStorage.getItem("xPlayer"))
     let o = JSON.parse(localStorage.getItem("oPlayer"))
@@ -136,6 +135,7 @@ function relodFun () {
     }
     playerO.position=o
     playerX.position=x
+    stepsCunter=steps
     stepsCunter=steps
 }
 // 
