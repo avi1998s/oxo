@@ -233,7 +233,14 @@ function gameClick2(e) {
     button.innerText = player.val;
     player.position.push([buttonId+1,buttonId2+1])
   }
+  
   checkWin2(player);
+  if (stepsCunter>arrAll.length*arrAll.length -1){
+    setTimeout(() => {
+      alert("no winner - draw")
+      restart();
+    }, 300);
+  }
   oSpan.innerText = playerO.record;
   xSpan.innerText = playerX.record;
 }
