@@ -1,4 +1,7 @@
-function appendTo(element, appendTO) {
+window.onload = () => {
+    // msgf()
+  };
+  function appendTo(element, appendTO) {
     getElemQ(appendTO).append(element);
   }
   function getElemQ(selctor) {
@@ -17,9 +20,17 @@ function appendTo(element, appendTO) {
     return e;
   }
   // דיבים ראשים
-  appendTo(crateELM("div", "hed container-fluid center", "a1"), "body"),
-    appendTo(crateELM("main", "a", "main"), "body"),
-    appendTo(crateELM("footer", "container-fluid"), "body");
+  appendTo(crateELM("div", "center", "msgH"), "body");
+  appendTo(crateELM("div", "hed container-fluid center"), "body");
+  appendTo(crateELM("main", "a", "main"), "body");
+  // דיבים משנה הודעה
+  
+  appendTo(crateELM("h2", "", "", "choose board size"), "#msgH");
+  appendTo(crateELM("div"), "#msgH");
+  appendTo(crateELM("button", "", "c3", "3X3"), "#msgH > div");
+  appendTo(crateELM("button", "", "c4", "4X4"), "#msgH > div");
+  appendTo(crateELM("button", "", "c5", "5X5"), "#msgH > div");
+  appendTo(crateELM("button", "", "c7", "7X7"), "#msgH > div");
   // דיבים מישנה הד
   appendTo(crateELM("div", "center", "result"), ".hed");
   appendTo(crateELM("nav", "container center"), ".hed");
@@ -72,55 +83,75 @@ function appendTo(element, appendTO) {
   let player = playerO;
   let stepsCunter = 0;
   let recordArr = [];
-  // ?---------------------------------------------------------------?
   let arrAll = [];
+  
   let bordSize;
-  while (true) {
-    bordSize = prompt("enter bord size bettwen 3-5");
-    if (bordSize == 5 || bordSize == 4 || bordSize == 3|| bordSize == 7) {
-      break;
-    }
-  }
-  for (i = 1; i <= bordSize; i++) {
-    arrAll.push([]);
-    for (j = 1; j <= bordSize; j++) {
-      appendTo(
-        crateELM("button", "playBut center", `b${i}-${j}`),
-        "#main .container"
-      );
-    }
-  }
+  console.log(allbuttons);
+  msgf();
   
-  let allbuttons = [...document.getElementsByClassName("playBut")];
-  
-  allbuttons.forEach((b) => {
-    b.addEventListener("click", gameClick2);
-    if (bordSize == 3) {
-      const mediaQuery700_3 = window.matchMedia("(max-width: 700px)");
-      const hendelMediaQuery700_3 = (e) => {
-        if (e.matches) {
-          getElemQ("main .container").style.width = "100%";
-          getElemQ("main .container").style.height = "70vh";
-          allbuttons.forEach((b) => (b.style.fontSize = "20vw"));
-          allbuttons.forEach((b) => (b.style.height = "33.3%"));
-          allbuttons.forEach((b) => (b.style.width = "33.3%"));
-        } else {
-          getElemQ("main .container").style.width = "50vw";
-          getElemQ("main .container").style.height = "34vw";
-          allbuttons.forEach((b) => (b.style.fontSize = "12vw"));
-          allbuttons.forEach((b) => (b.style.height = "33.3%"));
-          allbuttons.forEach((b) => (b.style.width = "33.3%"));
+  function msgf(board) {
+      let msgDiv = [...document.querySelectorAll("#msgH button")];
+      msgDiv.forEach((b) => {
+          b.addEventListener("click", (e) => {
+              let board = Number(e.target.id.slice(1));
+              bordSize = board;
+              getELM("msgH").style.display = "none";
+              makeButoons(board);
+              styleB()
+            });
+        });
+    }
+    
+    function makeButoons(board) {
+        let cunter = 1;
+        for (i = 1; i <= board; i++) {
+            arrAll.push([]);
+            for (j = 1; j <= board; j++) {
+                let className =
+                cunter % 2 == 0 ? "playBut butB center" : "playBut butA center";
+                appendTo(crateELM("button", className, `b${i}-${j}`), "#main .container");
+                cunter == 2 ? (cunter = 1) : (cunter = 2);
+                if (board == 4 && j == 4) {
+                    cunter == 2 ? (cunter = 1) : (cunter = 2);
+                }
+            }
         }
-      };
-      mediaQuery700_3.addListener(hendelMediaQuery700_3);
-      hendelMediaQuery700_3(mediaQuery700_3);
     }
-    if (bordSize == 4) {
-      // 920----------------------------------------------------------------------
-      const mediaQuery920_4 = window.matchMedia("(max-width: 920px)");
-      const mediaQuery700_4 = window.matchMedia("(max-width: 700px)");
   
-      const hendelMediaQuery = (e) => {
+    
+    
+    function styleB (){
+      let allbuttons = [...document.getElementsByClassName("playBut")];
+      console.log('bordSize',allbuttons);
+      allbuttons.forEach((b) => {
+          b.addEventListener("click", gameClick2);
+      console.log('bordSize',bordSize);
+      if (bordSize == 3) {
+          const mediaQuery700_3 = window.matchMedia("(max-width: 700px)");
+          const hendelMediaQuery700_3 = (e) => {
+              if (e.matches) {
+                  getElemQ("main .container").style.width = "100%";
+                  getElemQ("main .container").style.height = "70vh";
+                  allbuttons.forEach((b) => (b.style.fontSize = "20vw"));
+                  allbuttons.forEach((b) => (b.style.height = "33.3%"));
+                  allbuttons.forEach((b) => (b.style.width = "33.3%"));
+                } else {
+                    getElemQ("main .container").style.width = "50vw";
+                    getElemQ("main .container").style.height = "34vw";
+                    allbuttons.forEach((b) => (b.style.fontSize = "12vw"));
+                    allbuttons.forEach((b) => (b.style.height = "33.3%"));
+                    allbuttons.forEach((b) => (b.style.width = "33.3%"));
+                }
+            };
+            mediaQuery700_3.addListener(hendelMediaQuery700_3);
+            hendelMediaQuery700_3(mediaQuery700_3);
+        }
+        if (bordSize == 4) {
+            // 920----------------------------------------------------------------------
+            const mediaQuery920_4 = window.matchMedia("(max-width: 920px)");
+            const mediaQuery700_4 = window.matchMedia("(max-width: 700px)");
+            
+            const hendelMediaQuery = (e) => {
         if (mediaQuery920_4.matches) {
           getElemQ("main .container").style.width = "100%";
           getElemQ("main .container").style.height = "70vh";
@@ -128,35 +159,35 @@ function appendTo(element, appendTO) {
             b.style.fontSize = "15vw";
             b.style.width = "25%";
             b.style.height = "25%";
-          });
+        });
         } else if (mediaQuery700_4.matches) {
-          getElemQ("main .container").style.width = "100%";
-          getElemQ("main .container").style.height = "70vh";
-          allbuttons.forEach((b) => {
-            b.style.fontSize = "20vw";
-            b.style.width = "25%";
-            b.style.height = "25%";
-          });
+            getElemQ("main .container").style.width = "100%";
+            getElemQ("main .container").style.height = "70vh";
+            allbuttons.forEach((b) => {
+                b.style.fontSize = "20vw";
+                b.style.width = "25%";
+                b.style.height = "25%";
+            });
         } else {
-          getElemQ("main .container").style.width = "50vw";
-          getElemQ("main .container").style.height = "34vw";
-          allbuttons.forEach((b) => {
-            b.style.fontSize = "9vw";
-            b.style.width = "25%";
-            b.style.height = "25%";
-          });
+            getElemQ("main .container").style.width = "50vw";
+            getElemQ("main .container").style.height = "34vw";
+            allbuttons.forEach((b) => {
+                b.style.fontSize = "9vw";
+                b.style.width = "25%";
+                b.style.height = "25%";
+            });
         }
-      };
-  
-      mediaQuery920_4.addListener(hendelMediaQuery);
-      mediaQuery700_4.addListener(hendelMediaQuery);
-      hendelMediaQuery(mediaQuery920_4);
-      hendelMediaQuery(mediaQuery700_4);
-    }
-    if (bordSize == 5) {
-      // 920----------------------------------------------------------------------
-      const mediaQuery920_5 = window.matchMedia("(max-width: 920px)");
-      const hendelMediaQuery920_5 = (e) => {
+    };
+    
+    mediaQuery920_4.addListener(hendelMediaQuery);
+    mediaQuery700_4.addListener(hendelMediaQuery);
+    hendelMediaQuery(mediaQuery920_4);
+    hendelMediaQuery(mediaQuery700_4);
+}
+if (bordSize == 5) {
+    // 920----------------------------------------------------------------------
+    const mediaQuery920_5 = window.matchMedia("(max-width: 920px)");
+    const hendelMediaQuery920_5 = (e) => {
         if (e.matches) {
           getElemQ("main .container").style.width = "100%";
           getElemQ("main .container").style.height = "70vh";
@@ -185,7 +216,8 @@ function appendTo(element, appendTO) {
       };
       mediaQuery700_5.addListener(hendelMediaQuery700_5);
       hendelMediaQuery700_5(mediaQuery700_5);
-    }if (bordSize == 7) {
+    }
+    if (bordSize == 7) {
       // 920----------------------------------------------------------------------
       const mediaQuery920_7 = window.matchMedia("(max-width: 920px)");
       const hendelMediaQuery920_7 = (e) => {
@@ -219,7 +251,7 @@ function appendTo(element, appendTO) {
       hendelMediaQuery700_5(mediaQuery700_5);
     }
   });
-  
+  }
   function getELM(id) {
     return document.getElementById(id);
   }
@@ -227,7 +259,12 @@ function appendTo(element, appendTO) {
     button = e.target;
     buttonId = Number(button.id.slice(1, 2)) - 1;
     buttonId2 = Number(button.id.slice(3)) - 1;
-    button.style.color = "white";
+    getElemQ(".butA").forEach((b) =>
+      b.addEventListener("click", (e) => (e.target.style.color = "black"))
+    );
+    getElemQ(".butB").forEach((b) =>
+      b.addEventListener("click", (e) => (e.target.style.color = "white"))
+    );
     if (button.innerText == "") {
       stepsCunter++;
       changePlayer();
@@ -284,8 +321,8 @@ function appendTo(element, appendTO) {
   }
   function restart() {
     arrAll = [];
-    for (let i = 0; i <bordSize; i++){
-      arrAll.push([])
+    for (let i = 0; i < bordSize; i++) {
+      arrAll.push([]);
     }
     player = playerO;
     allbuttons.forEach((b) => (b.innerText = ""));
@@ -300,9 +337,7 @@ function appendTo(element, appendTO) {
   }
   
   function undo() {
-      for (var i = 0; i <arrows.length; i++) {
-          
-      }
+    for (var i = 0; i < arrows.length; i++) {}
     let a = player.position.pop();
     stepsCunter--;
     changePlayer();

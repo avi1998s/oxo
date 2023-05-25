@@ -35,7 +35,7 @@ function getELM (id){
 function gameClick(e){
     button = e.target
     buttonId =Number(button.id.slice(6)) 
-    button.style.color="white"
+    // button.style.color="white"
     if (button.innerText==""){
         stepsCunter++
         changePlayer()
@@ -75,6 +75,10 @@ function restart (){
     playerO.position=[]
     player=playerO
     allbuttons.forEach(b=>b.innerText="")
+    let a = [...document.getElementsByClassName("butA")]
+    let b = [...document.getElementsByClassName("butB")]
+    a.forEach(b=>b.style.color="white")
+    b.forEach(b=>b.style.color="black")
 }
 
 function changePlayer () {
@@ -82,11 +86,13 @@ function changePlayer () {
         player=playerX
     }
     else{player=playerO}
+    
 }
 
 function undo () {
     let a = player.position.pop()
-    stepsCunter--
+    if (stepsCunter>0){stepsCunter--}
+    console.log(stepsCunter);
     changePlayer()
     allbuttons.map(b=>{
         if(b.id==`button${a}`){
@@ -109,13 +115,12 @@ function saveFun(){
     localStorage.setItem("player", JSON.stringify(player))
 }
 function relodFun () {
-    allbuttons.forEach(b=>b.style.color="white")
     allbuttons.forEach(b=>b.innerText="")
     let x = JSON.parse(localStorage.getItem("xPlayer"))
     let o = JSON.parse(localStorage.getItem("oPlayer"))
     let p = JSON.parse(localStorage.getItem("player"))
     let steps = JSON.parse(localStorage.getItem("steps"))
-    player!=p
+    player!=p    
     for (i of x){
         allbuttons.forEach(b=>{
             if (b.id==`button${i}`){
@@ -132,6 +137,7 @@ function relodFun () {
     }
     playerO.position=o
     playerX.position=x
+    stepsCunter=steps
     stepsCunter=steps
 }
 // 
