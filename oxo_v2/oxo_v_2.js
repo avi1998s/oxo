@@ -388,11 +388,11 @@ function changePlayer() {
 function appendTo(element, appendTO) {
   getElemQ(appendTO).append(element);
 }
-function getElemQ(selctor) {
-  return document.querySelector(selctor);
-}
 function getELM(id) {
   return document.getElementById(id);
+}
+function getElemQ(selctor) {
+  return document.querySelector(selctor);
 }
 function crateELM(
   elementName,
